@@ -28,9 +28,11 @@ class MainActivity : ComponentActivity() {
             .build()
             .create(ApiInterface::class.java)
 
+        //taking data
         val retrofitData = retrofitBuilder.getRecipiData()
 
         retrofitData.enqueue(object : Callback<MyRecipeData?> {
+            //if api call is a success, then use the data of Api and show in your app
             override fun onResponse(call: Call<MyRecipeData?>, response: Response<MyRecipeData?>) {
                 val responseBody = response.body()
                 val recipiList = responseBody?.recipes!!
@@ -43,6 +45,7 @@ class MainActivity : ComponentActivity() {
             }
 
             override fun onFailure(call: Call<MyRecipeData?>, t: Throwable) {
+                //if Api call fails
                 Log.d("Main Activity", "onFailure: "+t.message)
             }
         })

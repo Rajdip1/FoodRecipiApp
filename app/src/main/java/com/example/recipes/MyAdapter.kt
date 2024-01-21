@@ -37,6 +37,8 @@ class MyAdapter(val context: Activity, val recipiArrayList: List<Recipe>):
         val currentRecipi = recipiArrayList[position]
         holder.name.text = currentRecipi.name
         holder.cuisin.text = currentRecipi.cuisine
+        //image view, how to show image in image view if the image is in form of url
+        //Picasso
         Picasso.get().load(currentRecipi.image).into(holder.image);
 
     }
